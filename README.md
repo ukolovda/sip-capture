@@ -21,6 +21,8 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+require 'sip/capture'
+
 Sip::Capture::Hep3.capture_all('127.0.0.1', 9060) do |item|
   puts item.inspect 
   # => {"ip_protocol_family":2,

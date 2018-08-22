@@ -1,5 +1,4 @@
 require 'socket'
-require 'json'
 
 module Sip
   module Capture
@@ -33,7 +32,7 @@ module Sip
             data = @socket.recvfrom_nonblock(65535)  #=> ["aaa", ["AF_INET", 33302, "localhost.localdomain", "127.0.0.1"]]
             process_data data[0], &block
           rescue IO::WaitReadable
-            IO.select([s1], [], [], 10)
+            IO.select([@socket], [], [], 10)
             retry
           end
         end
